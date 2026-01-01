@@ -1,0 +1,1031 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 50% 20%, #ff0000 0%, rgba(255, 0, 0, 0.15) 20%, transparent 50%),
+    radial-gradient(circle at 80% 80%, #ff0000 0%, rgba(255, 0, 0, 0.1) 20%, transparent 40%),
+    linear-gradient(to bottom, #000000 0%, #1a0000 50%, #000000 100%);
+  background-blend-mode: overlay, overlay, normal;
+  padding: 40rpx;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 0, 0, 0.05),
+    rgba(255, 0, 0, 0.05) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  animation: gridPulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scanLine 0.1s linear infinite;
+  z-index: 2;
+}
+
+/* 迈凯伦特殊卡片样式 */
+.mclaren-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.mclaren-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #FF7F27;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.mclaren-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mclaren-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.mclaren-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+/* 梅赛德斯特殊卡片样式 */
+.mercedes-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.mercedes-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #00B4B4;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.mercedes-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mercedes-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.mercedes-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.close-btn {
+  background-color: #fff;
+  color: #FF7F27;
+  border: none;
+  border-radius: 10rpx;
+  padding: 15rpx 40rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 梅赛德斯卡片的关闭按钮使用蓝绿色文字 */
+.mercedes-card .close-btn {
+  color: #00B4B4;
+}
+
+.close-btn:hover {
+  opacity: 0.9;
+}
+
+/* 红牛特殊卡片样式 */
+.redbull-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.redbull-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #0600EF;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.redbull-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.redbull-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.redbull-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.redbull-card .close-btn {
+  color: #0600EF;
+}
+
+/* 法拉利特殊卡片样式 */
+.ferrari-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.ferrari-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #DC0000;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.ferrari-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ferrari-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.ferrari-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.ferrari-card .close-btn {
+  color: #DC0000;
+}
+
+/* 威廉姆斯特殊卡片样式 */
+.williams-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.williams-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #0084CD;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.williams-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.williams-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.williams-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.williams-card .close-btn {
+  color: #0084CD;
+}
+
+/* 红牛二队特殊卡片样式 */
+.alphatauri-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.alphatauri-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #4A90E2;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.alphatauri-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.alphatauri-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.alphatauri-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.alphatauri-card .close-btn {
+  color: #4A90E2;
+}
+
+/* 阿斯顿马丁特殊卡片样式 */
+.astonmartin-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.astonmartin-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #006F62;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.astonmartin-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.astonmartin-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.astonmartin-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.astonmartin-card .close-btn {
+  color: #006F62;
+}
+
+/* 哈斯特殊卡片样式 */
+.haas-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.haas-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #FF1E00;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.haas-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.haas-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.haas-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.haas-card .close-btn {
+  color: #FF1E00;
+}
+
+/* 索伯特殊卡片样式 */
+.sauber-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.sauber-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #0066B3;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.sauber-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sauber-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.sauber-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.sauber-card .close-btn {
+  color: #0066B3;
+}
+
+/* Alpine特殊卡片样式 */
+.alpine-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.alpine-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500rpx;
+  background-color: #0099D8;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.alpine-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.alpine-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+}
+
+.alpine-desc {
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 40rpx;
+  line-height: 40rpx;
+}
+
+.alpine-card .close-btn {
+  color: #0099D8;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes titleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10rpx); }
+}
+
+@keyframes buttonFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5rpx); }
+}
+
+@keyframes iconPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.1); 
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes countdownPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 
+      0 20rpx 60rpx rgba(255, 0, 0, 0.4),
+      0 0 100rpx rgba(255, 0, 0, 0.2);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.02);
+    box-shadow: 
+      0 25rpx 70rpx rgba(255, 0, 0, 0.6),
+      0 0 120rpx rgba(255, 0, 0, 0.3);
+  }
+}
+
+/* 响应式布局 */
+@media (max-width: 375px) {
+  .container {
+    padding: 20rpx;
+  }
+  
+  .title {
+    font-size: 44rpx;
+  }
+  
+  .team-item {
+    padding: 20rpx;
+    margin-bottom: 15rpx;
+  }
+  
+  .team-rank {
+    width: 60rpx;
+    height: 60rpx;
+    font-size: 36rpx;
+    margin-right: 20rpx;
+  }
+  
+  .team-logo {
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+  }
+  
+  .team-name {
+    font-size: 32rpx;
+  }
+  
+  .like-btn, .dislike-btn {
+    padding: 10rpx;
+  }
+  
+  .btn-text {
+    font-size: 32rpx;
+  }
+  
+  .btn-count {
+    font-size: 24rpx;
+  }
+  
+  .card-team-name {
+    font-size: 40rpx;
+  }
+  
+  .favorite-btn .btn-label {
+    font-size: 32rpx;
+  }
+  
+  .comment-input {
+    padding: 20rpx;
+    font-size: 28rpx;
+    min-height: 150rpx;
+  }
+  
+  .comment-submit {
+    font-size: 30rpx;
+    padding: 20rpx;
+  }
+  
+  .view-comments-btn .btn-text {
+    font-size: 32rpx;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 52rpx;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff0000, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 
+    0 0 10rpx rgba(255, 0, 0, 0.8),
+    0 0 20rpx rgba(255, 0, 0, 0.6),
+    0 0 30rpx rgba(255, 0, 0, 0.4);
+  animation: titleFloat 3s ease-in-out infinite;
+}
+
+.teams-container {
+  width: 100%;
+  height: calc(100vh - 200rpx);
+}
+
+.team-item {
+  background-color: rgba(255, 0, 0, 0.05);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  box-shadow: 
+    0 4rpx 15rpx rgba(255, 0, 0, 0.3),
+    inset 0 0 30rpx rgba(255, 0, 0, 0.05);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.team-item:active {
+  transform: scale(0.98);
+  box-shadow: 
+    0 2rpx 10rpx rgba(255, 0, 0, 0.5),
+    inset 0 0 20rpx rgba(255, 0, 0, 0.1);
+}
+
+.team-rank {
+  width: 70rpx;
+  height: 70rpx;
+  background-color: #ff0000;
+  color: #ffffff;
+  font-size: 40rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  box-shadow: 
+    0 0 10rpx rgba(255, 0, 0, 0.8),
+    0 0 20rpx rgba(255, 0, 0, 0.5),
+    inset 0 0 10rpx rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 5rpx rgba(255, 255, 255, 0.8);
+}
+
+.team-logo {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 30rpx;
+  border-radius: 10rpx;
+  box-shadow: 
+    0 0 15rpx rgba(255, 0, 0, 0.5),
+    0 0 30rpx rgba(255, 0, 0, 0.2);
+  filter: drop-shadow(0 0 5rpx rgba(255, 0, 0, 0.8));
+}
+
+.team-info {
+  flex: 1;
+}
+
+.team-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+}
+
+.team-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.like-btn, .dislike-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 15rpx;
+  border-radius: 10rpx;
+  transition: all 0.3s ease;
+  animation: buttonFloat 2s ease-in-out infinite;
+}
+
+.like-btn:active, .dislike-btn:active {
+  transform: scale(0.95);
+}
+
+.like-btn {
+  color: #ff0000;
+}
+
+.dislike-btn {
+  color: #e74c3c;
+}
+
+.btn-text {
+  font-size: 36rpx;
+  margin-bottom: 5rpx;
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+.btn-count {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+/* 车队卡片弹窗样式 */
+
+.card-content {
+  position: relative;
+  z-index: 10;
+}
+.team-card-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 998;
+}
+
+.team-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-height: 80vh;
+  background: 
+    radial-gradient(circle at top, rgba(255, 0, 0, 0.2), transparent 70%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(26, 0, 0, 0.95));
+  border-radius: 30rpx;
+  box-shadow: 
+    0 20rpx 60rpx rgba(255, 0, 0, 0.4),
+    0 0 100rpx rgba(255, 0, 0, 0.2);
+  backdrop-filter: blur(20rpx);
+  border: 2rpx solid rgba(255, 0, 0, 0.6);
+  z-index: 999;
+  overflow: hidden;
+  animation: countdownPulse 1.5s ease-in-out infinite;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 30rpx;
+  border-bottom: 1rpx solid rgba(255, 0, 0, 0.4);
+  position: relative;
+}
+
+.card-logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+  box-shadow: 
+    0 0 20rpx rgba(255, 0, 0, 0.8),
+    0 0 40rpx rgba(255, 0, 0, 0.4);
+  margin-right: 30rpx;
+  filter: drop-shadow(0 0 10rpx rgba(255, 0, 0, 0.6));
+}
+
+.card-team-name {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+  flex: 1;
+}
+
+.card-close {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 60rpx;
+  color: rgba(255, 0, 0, 0.8);
+  cursor: pointer;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10rpx rgba(255, 0, 0, 0.8);
+}
+
+.card-close:active {
+  background-color: rgba(255, 0, 0, 0.2);
+  transform: scale(0.9);
+}
+
+.card-content {
+  padding: 40rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
+}
+
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15rpx;
+  padding: 30rpx;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 20rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2rpx solid rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 20rpx rgba(255, 0, 0, 0.3);
+}
+
+.favorite-btn:active {
+  background-color: rgba(255, 0, 0, 0.4);
+  transform: scale(0.98);
+}
+
+.favorite-btn .btn-icon {
+  font-size: 48rpx;
+}
+
+.favorite-btn .btn-label {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 0 0 10rpx rgba(255, 0, 0, 0.8);
+}
+
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+}
+
+.comment-input {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2rpx solid rgba(255, 0, 0, 0.6);
+  border-radius: 15rpx;
+  padding: 30rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  min-height: 180rpx;
+  line-height: 1.5;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 30rpx rgba(255, 0, 0, 0.1);
+}
+
+.comment-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.comment-submit {
+  background-color: #ff0000;
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 25rpx;
+  border-radius: 15rpx;
+  border: none;
+  margin-top: 10rpx;
+  box-shadow: 0 0 20rpx rgba(255, 0, 0, 0.8);
+  text-shadow: 0 0 10rpx rgba(255, 255, 255, 0.8);
+}
+
+.comment-submit:active {
+  background-color: #cc0000;
+  transform: scale(0.98);
+}
+
+.view-comments-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15rpx;
+  padding: 30rpx;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 20rpx;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2rpx solid rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 20rpx rgba(255, 0, 0, 0.3);
+}
+
+.view-comments-btn:active {
+  background-color: rgba(255, 0, 0, 0.4);
+  transform: scale(0.98);
+}
+
+.view-comments-btn .btn-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff0000;
+  margin-bottom: 0;
+  text-shadow: 0 0 10rpx rgba(255, 0, 0, 0.8);
+}
+
+.view-comments-btn .btn-arrow {
+  font-size: 32rpx;
+  color: #ff0000;
+  font-weight: bold;
+  text-shadow: 0 0 10rpx rgba(255, 0, 0, 0.8);
+}

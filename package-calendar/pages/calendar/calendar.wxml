@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="header">
+    <text class="title">{{currentRace.name}}</text>
+  </view>
+
+  <view class="calendar-section">
+    <view class="date-info">
+      <text class="date-text">{{currentRace.date}}</text>
+      <text class="location-text">{{currentRace.location}}</text>
+    </view>
+
+    <view class="race-details">
+      <view class="detail-item">
+        <text class="detail-label">练习赛1</text>
+        <text class="detail-value">{{currentRace.practice1}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">练习赛2</text>
+        <text class="detail-value">{{currentRace.practice2}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">练习赛3</text>
+        <text class="detail-value">{{currentRace.practice3}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">排位赛</text>
+        <text class="detail-value">{{currentRace.qualifying}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">正赛</text>
+        <text class="detail-value">{{currentRace.race}}</text>
+      </view>
+    </view>
+
+    <view class="circuit-info">
+      <text class="circuit-title">赛道信息</text>
+      <view class="circuit-details">
+        <text class="circuit-detail">单圈长度: {{currentRace.circuit.length}}</text>
+        <text class="circuit-detail">总圈数: {{currentRace.circuit.laps}}</text>
+        <text class="circuit-detail">比赛距离: {{currentRace.circuit.distance}}</text>
+        <text class="circuit-detail">最快单圈: {{currentRace.circuit.fastestLap}}</text>
+      </view>
+    </view>
+  </view>
+</view>

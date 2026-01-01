@@ -1,0 +1,164 @@
+<view class="container">
+  <view class="header">
+    <text class="title">车队红黑榜</text>
+  </view>
+
+  <scroll-view class="teams-container" scroll-y>
+    <view class="team-item" wx:for="{{teams}}" wx:key="id" bindtap="showTeamCard" data-team="{{item}}">
+      <view class="team-rank">{{item.rank}}</view>
+      <image class="team-logo" src="{{item.logo}}" mode="aspectFit" binderror="onImageError"></image>
+      <view class="team-info">
+        <text class="team-name">{{item.name}}</text>
+      </view>
+      <view class="team-actions">
+        <view class="like-btn" bindtap="likeTeam" data-id="{{item.id}}">
+          <text class="btn-text">👍</text>
+          <text class="btn-count">{{item.likes}}</text>
+        </view>
+        <view class="dislike-btn" bindtap="dislikeTeam" data-id="{{item.id}}">
+          <text class="btn-text">👎</text>
+          <text class="btn-count">{{item.dislikes}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 车队卡片弹窗 -->
+  <view class="team-card-mask" wx:if="{{showCard}}" bindtap="hideTeamCard"></view>
+  <view class="team-card" wx:if="{{showCard}}">
+    <view class="card-header">
+      <image class="card-logo" src="{{selectedTeam.logo}}" mode="aspectFit" binderror="onImageError"></image>
+      <text class="card-team-name">{{selectedTeam.name}}</text>
+      <view class="card-close" bindtap="hideTeamCard">×</view>
+    </view>
+    
+    <view class="card-content">
+      <!-- 选择主队按钮 -->
+      <view class="favorite-btn" bindtap="toggleFavorite" wx:if="{{selectedTeam}}">
+        <text class="btn-icon">{{isFavorite ? '❤' : '🤍'}}</text>
+        <text class="btn-label">{{isFavorite ? '取消主队' : '设为主队'}}</text>
+      </view>
+      
+      <!-- 留言功能 -->
+      <view class="comment-section">
+        <text class="section-title">留言</text>
+        <input class="comment-input" placeholder="写下你的留言..." bindinput="onCommentInput" value="{{commentText}}"></input>
+        <button class="comment-submit" bindtap="submitComment">提交留言</button>
+      </view>
+      
+      <!-- 查看留言按钮 -->
+      <view class="view-comments-btn" bindtap="viewComments">
+        <text class="btn-text">查看留言</text>
+        <text class="btn-arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 迈凯伦特殊卡片 -->
+  <view class="mclaren-card-mask" wx:if="{{showMclarenCard}}" bindtap="hideMclarenCard"></view>
+  <view class="mclaren-card" wx:if="{{showMclarenCard}}">
+    <view class="mclaren-card-content">
+      <text class="mclaren-title">你发现了一本名为《Papaya Rules》的神秘书籍</text>
+      <text class="mclaren-desc">书中记载着迈凯伦列祖列宗内斗的前朝往事……</text>
+      <text class="mclaren-desc">获得成就：端水大师……？</text>
+      <button class="close-btn" bindtap="hideMclarenCard">关闭</button>
+    </view>
+  </view>
+
+  <!-- 梅赛德斯特殊卡片 -->
+  <view class="mercedes-card-mask" wx:if="{{showMercedesCard}}" bindtap="hideMercedesCard"></view>
+  <view class="mercedes-card" wx:if="{{showMercedesCard}}">
+    <view class="mercedes-card-content">
+      <text class="mercedes-title">你每个比赛周最常问的一句话是</text>
+      <text class="mercedes-desc">今天多少度？</text>
+      <button class="close-btn" bindtap="hideMercedesCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 红牛特殊卡片 -->
+  <view class="redbull-card-mask" wx:if="{{showRedBullCard}}" bindtap="hideRedBullCard"></view>
+  <view class="redbull-card" wx:if="{{showRedBullCard}}">
+    <view class="redbull-card-content">
+      <text class="redbull-title">你收到了一罐蓝色红牛</text>
+      <text class="redbull-title">我们只是一个饮料厂，你还指望什么？五冠王吗？</text>
+      <text class="redbull-desc">获得成就：神秘糖水铺</text>
+      <button class="close-btn" bindtap="hideRedBullCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 法拉利特殊卡片 -->
+  <view class="ferrari-card-mask" wx:if="{{showFerrariCard}}" bindtap="hideFerrariCard"></view>
+  <view class="ferrari-card" wx:if="{{showFerrariCard}}">
+    <view class="ferrari-card-content">
+      <text class="ferrari-title">你发现了一桶氦煤烷汽油</text>
+      <text class="ferrari-title">你决定用乙烷点燃它……</text>
+      <text class="ferrari-desc">获得成就：回忆型车队</text>
+      <button class="close-btn" bindtap="hideFerrariCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 威廉姆斯特殊卡片 -->
+  <view class="williams-card-mask" wx:if="{{showWilliamsCard}}" bindtap="hideWilliamsCard"></view>
+  <view class="williams-card" wx:if="{{showWilliamsCard}}">
+    <view class="williams-card-content">
+      <text class="williams-title">你收到了一份难看的财报</text>
+      <text class="williams-title">和《Excel从入门到精通》</text>
+      <text class="williams-desc">获得成就：精打细算</text>
+      <button class="close-btn" bindtap="hideWilliamsCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 红牛二队特殊卡片 -->
+  <view class="alphatauri-card-mask" wx:if="{{showAlphaTauriCard}}" bindtap="hideAlphaTauriCard"></view>
+  <view class="alphatauri-card" wx:if="{{showAlphaTauriCard}}">
+    <view class="alphatauri-card-content">
+      <text class="alphatauri-title">Time to work, mate!</text>
+      <text class="alphatauri-title">你的新工作是小红牛TikTok账号的Admin</text>
+      <text class="alphatauri-desc">获得成就：流媒体运营WCC</text>
+      <button class="close-btn" bindtap="hideAlphaTauriCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 阿斯顿马丁特殊卡片 -->
+  <view class="astonmartin-card-mask" wx:if="{{showAstonMartinCard}}" bindtap="hideAstonMartinCard"></view>
+  <view class="astonmartin-card" wx:if="{{showAstonMartinCard}}">
+    <view class="astonmartin-card-content">
+      <text class="astonmartin-title">你找到了宇宙的尽头</text>
+      <text class="astonmartin-title">原来F1席位也可以有编制吗？！</text>
+      <text class="astonmartin-desc">获得成就：老少咸宜</text>
+      <button class="close-btn" bindtap="hideAstonMartinCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 哈斯特殊卡片 -->
+  <view class="haas-card-mask" wx:if="{{showHaasCard}}" bindtap="hideHaasCard"></view>
+  <view class="haas-card" wx:if="{{showHaasCard}}">
+    <view class="haas-card-content">
+      <text class="haas-title">你献祭了自家车手超级驾照的5分</text>
+      <text class="haas-title">获得了海底捞大学生1折优惠券</text>
+      <text class="haas-desc">获得成就：和所有的烦恼说拜拜</text>
+      <button class="close-btn" bindtap="hideHaasCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- 索伯特殊卡片 -->
+  <view class="sauber-card-mask" wx:if="{{showSauberCard}}" bindtap="hideSauberCard"></view>
+  <view class="sauber-card" wx:if="{{showSauberCard}}">
+    <view class="sauber-card-content">
+      <text class="sauber-title">获得了一箱希腊酸奶</text>
+      <text class="sauber-title">安慕希</text>
+      <text class="sauber-desc">获得成就：人走赞助商还在</text>
+      <button class="close-btn" bindtap="hideSauberCard">关闭</button>
+    </view>
+  </view>
+  
+  <!-- Alpine特殊卡片 -->
+  <view class="alpine-card-mask" wx:if="{{showAlpineCard}}" bindtap="hideAlpineCard"></view>
+  <view class="alpine-card" wx:if="{{showAlpineCard}}">
+    <view class="alpine-card-content">
+      <text class="alpine-title">F2引擎也能参赛了？</text>
+      <text class="alpine-desc">获得成就：鸡皮兔恩静</text>
+      <button class="close-btn" bindtap="hideAlpineCard">关闭</button>
+    </view>
+  </view>
+</view>

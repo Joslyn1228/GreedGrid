@@ -1,0 +1,52 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">
+    <text>GreedGrid</text>
+  </view>
+
+  <!-- 功能网格 -->
+  <view class="function-grid">
+    <!-- 赛程模块 -->
+    <view class="grid-item" bindtap="navigateToSchedule">
+      <view class="item-icon race-schedule">📅</view>
+      <text class="item-title">赛程</text>
+      <text class="item-subtitle">查看最新赛历</text>
+    </view>
+
+    <!-- 积分榜模块 -->
+    <view class="grid-item" bindtap="navigateToRanking">
+      <view class="item-icon standings">🏆</view>
+      <text class="item-title">积分榜</text>
+      <text class="item-subtitle">实时排行榜</text>
+    </view>
+
+    <!-- 资讯模块 -->
+    <view class="grid-item" bindtap="navigateToNews">
+      <view class="item-icon news">📰</view>
+      <text class="item-title">资讯</text>
+      <text class="item-subtitle">最新动态</text>
+    </view>
+
+    <!-- 车队模块 -->
+    <view class="grid-item" bindtap="navigateToTeams">
+      <view class="item-icon teams">🏎️</view>
+      <text class="item-title">车队</text>
+      <text class="item-subtitle">F1车队信息</text>
+    </view>
+  </view>
+
+  <!-- 资讯预览 -->
+  <view class="news-preview">
+    <text class="section-title">最新资讯</text>
+    <view class="news-list">
+      <!-- 新闻项 -->
+      <view class="news-item" wx:for="{{newsList}}" wx:key="id">
+        <view class="news-content">
+          <text class="news-title">{{item.title}}</text>
+          <text class="news-date">{{item.date}}</text>
+        </view>
+        <view class="news-arrow">→</view>
+      </view>
+    </view>
+  </view>
+</view>

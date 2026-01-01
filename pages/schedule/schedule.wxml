@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="header">
+    <text class="title">2026赛历</text>
+  </view>
+
+  <scroll-view class="schedule-container" scroll-y enable-flex>
+    <view class="race-item" wx:for="{{races}}" wx:key="id" bindtap="navigateToCalendar">
+      <view class="race-round">{{item.round}}</view>
+      <view class="race-info">
+        <text class="race-name">{{item.name}}</text>
+        <text class="race-date">{{item.date}}</text>
+        <text class="race-location">{{item.location}}</text>
+      </view>
+      <view class="race-arrow">></view>
+    </view>
+  </scroll-view>
+</view>

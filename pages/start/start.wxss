@@ -1,0 +1,100 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #000000, #ff0000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.f1-logo {
+  width: 300rpx;
+  height: 300rpx;
+  margin-bottom: 40rpx;
+  transition: transform 0.3s ease;
+}
+
+.title {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 100rpx;
+  font-style: italic;
+  text-shadow: 0 0 20rpx rgba(225, 6, 0, 0.8);
+}
+
+.swipe-hint {
+  position: absolute;
+  bottom: 80rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pulse 1.5s infinite;
+}
+
+.swipe-text {
+  font-size: 28rpx;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+  opacity: 0.8;
+}
+
+.swipe-arrow {
+  font-size: 40rpx;
+  color: #ffffff;
+  animation: bounce 1s infinite;
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* 弹跳动画 */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10rpx);
+  }
+}
+
+/* 速度线动画 */
+.speed-line {
+  position: absolute;
+  width: 2rpx;
+  height: 50rpx;
+  background: rgba(225, 6, 0, 0.5);
+  animation: speedMove 2s infinite linear;
+}
+
+@keyframes speedMove {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50rpx);
+    opacity: 0;
+  }
+}

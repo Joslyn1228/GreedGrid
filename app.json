@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/index/index",
+    "pages/schedule/schedule",
+    "pages/ranking/ranking",
+    "pages/driver/driver"
+  ],
+  "window": {
+    "backgroundColor": "#000000",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "GreedGrid",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="header">
+    <text class="title">PICK UP MY DRIVER</text>
+    <view class="remaining-picks-card">
+      <text class="remaining-picks-text">今日剩余</text>
+      <text class="remaining-picks-count">{{remainingPicks}}</text>
+    </view>
+  </view>
+
+  <view class="drivers-container">
+    <view class="driver-item" wx:for="{{drivers}}" wx:for-index="index" wx:key="id" bindtap="showDriverCard" data-id="{{item.id}}" data-index="{{index}}">
+      <image class="driver-photo" src="{{item.photo}}" mode="aspectFit"></image>
+      <view class="driver-info">
+        <text class="driver-number">{{item.number}}</text>
+        <text class="driver-name">{{item.name}}</text>
+        <text class="driver-team">{{item.team}}</text>
+      </view>
+      <view class="pick-section">
+        <view class="heart-icon" catchtap="pickDriver" data-id="{{item.id}}">
+          <text class="heart-emoji" wx:if="!item.selected">🤍</text>
+          <text class="heart-emoji selected" wx:else>❤</text>
+        </view>
+        <text class="pick-count">{{item.picks}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 弹出卡片 -->
+  <view class="popup-overlay" wx:if="{{showPopup}}" bindtap="hideDriverCard">
+    <view class="popup-content" catchtap>
+      <view class="popup-header">
+        <image class="popup-photo" src="{{currentDriver.photo}}" mode="aspectFit"></image>
+        <view class="popup-info">
+          <text class="popup-number">{{currentDriver.number}}</text>
+          <text class="popup-name">{{currentDriver.name}}</text>
+          <text class="popup-team">{{currentDriver.team}}</text>
+        </view>
+        <view class="close-btn" bindtap="hideDriverCard">×</view>
+      </view>
+      
+      <view class="popup-body">
+        <view class="message-input-section">
+          <textarea class="message-input" placeholder="请输入留言..." value="{{newMessage}}" bindinput="onInputMessage"></textarea>
+          <button class="submit-btn" bindtap="submitMessage">留言</button>
+        </view>
+        
+        <view class="message-list-section">
+          <button class="toggle-btn" bindtap="toggleMessageList">
+            {{showMessageList ? '隐藏留言' : '查看留言'}}
+          </button>
+          
+          <view class="message-list" wx:if="{{showMessageList}}">
+            <view class="message-item" wx:for="{{messages}}" wx:key="id">
+              <text class="message-content">{{item.content}}</text>
+              <text class="message-date">{{item.date}}</text>
+            </view>
+            <view class="no-messages" wx:if="{{messages.length === 0}}">
+              <text>暂无留言</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
