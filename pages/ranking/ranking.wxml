@@ -11,11 +11,11 @@
         <text class="team-name">{{item.name}}</text>
       </view>
       <view class="team-actions">
-        <view class="like-btn" bindtap="likeTeam" data-id="{{item.id}}">
+        <view class="like-btn" catchtap="likeTeam" data-id="{{item.id}}">
           <text class="btn-text">👍</text>
           <text class="btn-count">{{item.likes}}</text>
         </view>
-        <view class="dislike-btn" bindtap="dislikeTeam" data-id="{{item.id}}">
+        <view class="dislike-btn" catchtap="dislikeTeam" data-id="{{item.id}}">
           <text class="btn-text">👎</text>
           <text class="btn-count">{{item.dislikes}}</text>
         </view>
@@ -50,6 +50,25 @@
       <view class="view-comments-btn" bindtap="viewComments">
         <text class="btn-text">查看留言</text>
         <text class="btn-arrow">→</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 自定义留言弹窗 -->
+  <view class="comments-overlay" wx:if="{{showCommentsModal}}" bindtap="hideCommentsModal">
+    <view class="comments-modal" catchtap>
+      <view class="comments-modal-header">
+        <text class="comments-modal-title">{{selectedTeam.name}}的留言</text>
+        <view class="comments-modal-close" bindtap="hideCommentsModal">×</view>
+      </view>
+      <view class="comments-modal-content">
+        <view class="comment-item" wx:for="{{currentComments}}" wx:key="id" style="animation-delay: {{index * 50}}ms;">
+          <view class="comment-time">{{item.time}}</view>
+          <view class="comment-text">{{item.text}}</view>
+        </view>
+        <view class="no-comments" wx:if="{{currentComments.length === 0}}">
+          <text>暂无留言</text>
+        </view>
       </view>
     </view>
   </view>

@@ -627,6 +627,224 @@
   }
 }
 
+/* 留言弹窗动画 */
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9) translateY(-20rpx);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.02) translateY(5rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) translateY(0);
+  }
+}
+
+/* 蒙版层动画 */
+@keyframes overlayFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 留言项进入动画 */
+@keyframes commentSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20rpx) translateY(10rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* 无留言提示动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* 自定义留言弹窗样式 */
+.comments-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1002;
+  animation: overlayFadeIn 0.3s ease-out;
+}
+
+.comments-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 85%;
+  max-height: 70vh;
+  background: 
+    radial-gradient(circle at top left, rgba(255, 0, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at bottom right, rgba(255, 0, 0, 0.2) 0%, transparent 50%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.98) 0%, rgba(26, 0, 0, 0.98) 100%);
+  border-radius: 35rpx;
+  box-shadow: 
+    0 20rpx 80rpx rgba(255, 0, 0, 0.6),
+    0 0 150rpx rgba(255, 0, 0, 0.3),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25rpx);
+  border: 2rpx solid rgba(255, 0, 0, 0.8);
+  z-index: 1003;
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+.comments-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 45rpx 30rpx;
+  border-bottom: 1rpx solid rgba(255, 0, 0, 0.5);
+  position: relative;
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.1), transparent 50%, rgba(255, 0, 0, 0.1));
+}
+
+.comments-modal-title {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 15rpx rgba(255, 0, 0, 1), 0 0 30rpx rgba(255, 0, 0, 0.5);
+  letter-spacing: 1rpx;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.comments-modal-close {
+  font-size: 64rpx;
+  color: rgba(255, 0, 0, 0.9);
+  cursor: pointer;
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 15rpx rgba(255, 0, 0, 1);
+  background: rgba(255, 0, 0, 0.1);
+  border: 1rpx solid rgba(255, 0, 0, 0.3);
+}
+
+.comments-modal-close:active {
+  background-color: rgba(255, 0, 0, 0.3);
+  transform: scale(0.85) rotate(90deg);
+  box-shadow: 0 0 20rpx rgba(255, 0, 0, 0.8);
+}
+
+.comments-modal-content {
+  padding: 35rpx;
+  max-height: 50vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25rpx;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+/* 自定义滚动条样式 */
+.comments-modal-content::-webkit-scrollbar {
+  width: 8rpx;
+}
+
+.comments-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 4rpx;
+}
+
+.comments-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 0, 0.6);
+  border-radius: 4rpx;
+}
+
+.comments-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 0, 0, 0.8);
+}
+
+.comment-item {
+  background: 
+    linear-gradient(to bottom, rgba(255, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.2) 100%),
+    rgba(0, 0, 0, 0.7);
+  border: 1rpx solid rgba(255, 0, 0, 0.5);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 30rpx rgba(255, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: commentSlideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.comment-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2rpx;
+  background: linear-gradient(to right, transparent, rgba(255, 0, 0, 0.8), transparent);
+}
+
+.comment-item:active {
+  transform: translateY(2rpx);
+  box-shadow: 
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 40rpx rgba(255, 0, 0, 0.1);
+}
+
+.comment-time {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 15rpx;
+  display: block;
+  font-family: 'Arial', sans-serif;
+  text-shadow: 0 0 5rpx rgba(0, 0, 0, 0.5);
+}
+
+.comment-text {
+  font-size: 34rpx;
+  color: #ffffff;
+  line-height: 1.6;
+  text-shadow: 0 0 10rpx rgba(0, 0, 0, 0.8);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.no-comments {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 34rpx;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1rpx dashed rgba(255, 0, 0, 0.4);
+  border-radius: 20rpx;
+  margin: 20rpx 0;
+  backdrop-filter: blur(10rpx);
+  animation: pulse 2s ease-in-out infinite;
+}
+
 /* 响应式布局 */
 @media (max-width: 375px) {
   .container {
@@ -800,7 +1018,7 @@
   padding: 15rpx;
   border-radius: 10rpx;
   transition: all 0.3s ease;
-  animation: buttonFloat 2s ease-in-out infinite;
+  /* 移除按钮浮动动画，避免页面抖动 */
 }
 
 .like-btn:active, .dislike-btn:active {
@@ -818,7 +1036,7 @@
 .btn-text {
   font-size: 36rpx;
   margin-bottom: 5rpx;
-  animation: iconPulse 1.5s ease-in-out infinite;
+  /* 移除图标脉冲动画，避免页面抖动 */
 }
 
 .btn-count {

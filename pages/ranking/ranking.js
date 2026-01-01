@@ -30,7 +30,10 @@ Page({
     isFavorite: false,
     favoriteTeams: [],
     // 留言相关状态
-    commentText: ''
+    commentText: '',
+    // 自定义留言弹窗状态
+    showCommentsModal: false,
+    currentComments: []
   },
 
   onLoad() {
@@ -64,8 +67,7 @@ Page({
         teams: teams
       });
       
-      // 震动反馈
-      wx.vibrateShort();
+      // 移除震动反馈，避免页面抖动
     }
   },
 
@@ -81,8 +83,7 @@ Page({
         teams: teams
       });
       
-      // 震动反馈
-      wx.vibrateShort();
+      // 移除震动反馈，避免页面抖动
     }
   },
 
@@ -349,25 +350,26 @@ Page({
     let teamComments = comments[this.data.selectedTeam.id] || [];
     
     if (teamComments.length === 0) {
-      wx.showToast({
-        title: '暂无留言',
-        icon: 'none',
-        duration: 1500
+      // 即使没有留言也显示弹窗，方便后续添加
+      this.setData({
+        currentComments: teamComments,
+        showCommentsModal: true
       });
       return;
     }
     
-    // 显示留言列表
-    let commentList = teamComments.map(comment => {
-      return `${comment.time}: ${comment.text}`;
-    }).join('\n\n');
-    
-    wx.showModal({
-      title: `${this.data.selectedTeam.name}的留言`,
-      content: commentList,
-      showCancel: true,
-      cancelText: '关闭',
-      showConfirmButton: false
+    // 显示自定义留言弹窗
+    this.setData({
+      currentComments: teamComments,
+      showCommentsModal: true
+    });
+  },
+  
+  // 隐藏留言弹窗
+  hideCommentsModal() {
+    this.setData({
+      showCommentsModal: false,
+      currentComments: []
     });
   }
 });

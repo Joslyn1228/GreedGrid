@@ -16,7 +16,7 @@
     <!-- 车队红黑榜 -->
     <view class="function-button" bindtap="navigateToRanking">
       <view class="button-content">
-        <image class="button-icon" src="/images/team1.png" mode="aspectFit"></image>
+        <text class="button-icon">🏎️</text>
         <text class="button-text">车队红黑榜</text>
       </view>
       <text class="button-arrow">→</text>
@@ -25,7 +25,7 @@
     <!-- PICK UP MY DRIVER -->
     <view class="function-button" bindtap="navigateToDriver">
       <view class="button-content">
-        <image class="button-icon" src="/images/driver1.png" mode="aspectFit"></image>
+        <text class="button-icon">🏁</text>
         <text class="button-text">PICK UP MY DRIVER</text>
       </view>
       <text class="button-arrow">→</text>
@@ -34,7 +34,7 @@
     <!-- 2026赛历 -->
     <view class="function-button" bindtap="navigateToSchedule">
       <view class="button-content">
-        <image class="button-icon" src="/images/f1_logo.png" mode="aspectFit"></image>
+        <text class="button-icon">🛞</text>
         <text class="button-text">2026赛历</text>
       </view>
       <text class="button-arrow">→</text>
