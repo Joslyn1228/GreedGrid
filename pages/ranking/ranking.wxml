@@ -3,7 +3,7 @@
     <text class="title">车队红黑榜</text>
   </view>
 
-  <scroll-view class="teams-container" scroll-y>
+  <scroll-view class="teams-container" scroll-y="true">
     <view class="team-item" wx:for="{{teams}}" wx:key="id" bindtap="showTeamCard" data-team="{{item}}">
       <view class="team-rank">{{item.rank}}</view>
       <image class="team-logo" src="{{item.logo}}" mode="aspectFit" binderror="onImageError"></image>

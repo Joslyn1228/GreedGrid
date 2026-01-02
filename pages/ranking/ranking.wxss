@@ -9,7 +9,6 @@
   padding: 40rpx;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
   perspective: 1000px;
 }
 
@@ -936,6 +935,8 @@
 .teams-container {
   width: 100%;
   height: calc(100vh - 200rpx);
+  flex: 1;
+  overflow-y: auto;
 }
 
 .team-item {
@@ -1008,13 +1009,14 @@
   display: flex;
   flex-direction: column;
   gap: 15rpx;
+  z-index: 100;
+  position: relative;
 }
 
 .like-btn, .dislike-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
   padding: 15rpx;
   border-radius: 10rpx;
   transition: all 0.3s ease;
@@ -1144,10 +1146,11 @@
   padding: 30rpx;
   background-color: rgba(255, 0, 0, 0.2);
   border-radius: 20rpx;
-  cursor: pointer;
   transition: all 0.3s ease;
   border: 2rpx solid rgba(255, 0, 0, 0.6);
   box-shadow: 0 0 20rpx rgba(255, 0, 0, 0.3);
+  z-index: 100;
+  position: relative;
 }
 
 .favorite-btn:active {
@@ -1222,10 +1225,11 @@
   padding: 30rpx;
   background-color: rgba(255, 0, 0, 0.2);
   border-radius: 20rpx;
-  cursor: pointer;
   transition: all 0.3s ease;
   border: 2rpx solid rgba(255, 0, 0, 0.6);
   box-shadow: 0 0 20rpx rgba(255, 0, 0, 0.3);
+  z-index: 100;
+  position: relative;
 }
 
 .view-comments-btn:active {
