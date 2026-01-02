@@ -1,16 +1,16 @@
 Page({
   data: {
     teams: [
-      { id: 1, rank: 1, name: '迈凯伦', likes: 2, dislikes: 4, logo: '/images/team1.png' },
-      { id: 2, rank: 2, name: '梅赛德斯', likes: 2, dislikes: 3, logo: '/images/team2.png' },
-      { id: 3, rank: 3, name: '红牛', likes: 2, dislikes: 1, logo: '/images/team3.png' },
-      { id: 4, rank: 4, name: '法拉利', likes: 0, dislikes: 8, logo: '/images/team4.png' },
-      { id: 5, rank: 5, name: '威廉姆斯', likes: 3, dislikes: 0, logo: '/images/team5.png' },
-      { id: 6, rank: 6, name: '红牛二队', likes: 1, dislikes: 0, logo: '/images/team6.png' },
-      { id: 7, rank: 7, name: '阿斯顿马丁', likes: 0, dislikes: 0, logo: '/images/team7.png' },
-      { id: 8, rank: 8, name: '哈斯', likes: 0, dislikes: 0, logo: '/images/team8.png' },
-      { id: 9, rank: 9, name: '索伯', likes: 0, dislikes: 0, logo: '/images/team9.png' },
-      { id: 10, rank: 10, name: 'Alpine', likes: 0, dislikes: 0, logo: '/images/team10.png' }
+      { id: 1, rank: 1, name: '迈凯伦', likes: 2, dislikes: 4, logo: '/images/teams/team1.png' },
+      { id: 2, rank: 2, name: '梅赛德斯', likes: 2, dislikes: 3, logo: '/images/teams/team2.png' },
+      { id: 3, rank: 3, name: '红牛', likes: 2, dislikes: 1, logo: '/images/teams/team3.png' },
+      { id: 4, rank: 4, name: '法拉利', likes: 0, dislikes: 8, logo: '/images/teams/team4.png' },
+      { id: 5, rank: 5, name: '威廉姆斯', likes: 3, dislikes: 0, logo: '/images/teams/team5.png' },
+      { id: 6, rank: 6, name: '红牛二队', likes: 1, dislikes: 0, logo: '/images/teams/team6.png' },
+      { id: 7, rank: 7, name: '阿斯顿马丁', likes: 0, dislikes: 0, logo: '/images/teams/team7.png' },
+      { id: 8, rank: 8, name: '哈斯', likes: 0, dislikes: 0, logo: '/images/teams/team8.png' },
+      { id: 9, rank: 9, name: '索伯', likes: 0, dislikes: 0, logo: '/images/teams/team9.png' },
+      { id: 10, rank: 10, name: 'Alpine', likes: 0, dislikes: 0, logo: '/images/teams/team10.png' }
     ],
     // 弹窗相关状态
     showCard: false,
@@ -39,6 +39,16 @@ Page({
   onLoad() {
     // 页面加载时的初始化
     console.log('车队红黑榜加载完成');
+    
+    // 强制更新所有车队logo路径
+    const teams = this.data.teams.map(team => ({
+      ...team,
+      logo: `/images/teams/team${team.id}.png`
+    }));
+    
+    this.setData({ teams });
+    console.log('Updated Teams data:', teams);
+    
     // 从本地存储获取主队信息
     this.checkFavoriteTeam();
   },
@@ -52,6 +62,7 @@ Page({
   // 图片加载错误处理
   onImageError(e) {
     console.error('图片加载错误:', e);
+    console.error('尝试加载的图片路径:', e.target.src);
     // 可以在这里设置默认图片
   },
 

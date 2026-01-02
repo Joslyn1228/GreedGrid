@@ -1,5 +1,5 @@
 <view class="container" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd">
-  <image class="f1-logo" src="/images/f1_logo.png" mode="aspectFit" style="transform: scale({{scale}}) rotate({{rotate}}deg);"></image>
+  <image class="f1-logo" src="/images/logos/f1_logo.png" mode="aspectFit" style="transform: scale({{scale}}) rotate({{rotate}}deg);"></image>
   <text class="title">GreedGrid</text>
   <view class="swipe-hint">
     <text class="swipe-text">上划进入</text>
